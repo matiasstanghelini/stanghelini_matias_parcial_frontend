@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+  <!-- Meti un alto vibe coding con esto -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -142,9 +143,19 @@
             <h2 class="text-center mb-4 animate__animated animate__fadeInDown">
               Lista de Autos
             </h2>
-            <div class="list-group" id="autosList">
-              <!-- Los autos se agregarán aquí dinámicamente -->
-            </div>
+            <table class="table table-bordered" style="width: 30%; margin: 20px auto;">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Año</th>
+                  <th>Color</th>
+                </tr>
+              </thead>
+              <tbody id="car-table-body">
+                <!-- Filas de autos se agregarán aquí -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
