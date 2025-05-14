@@ -1,8 +1,3 @@
-// Activar tooltips
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-});
-
 document.getElementById('carForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const marca = document.getElementById('marca').value.trim();
