@@ -3,41 +3,43 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
-// Form validation
 document.getElementById('carForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const form = event.target;
-    
-    if (!form.checkValidity()) {
-        event.stopPropagation();
-        form.classList.add('was-validated');
-        document.getElementById('warning').style.display = 'block';
-        return;
-    }
-    
     const marca = document.getElementById('marca').value.trim();
     const modelo = document.getElementById('modelo').value.trim();
     const anio = parseInt(document.getElementById('anio').value);
     const color = document.getElementById('color').value;
-    const warning = document.getElementById('warning');
+    const warningMessage = document.getElementById('warning');
 
-    warning.style.display = 'none';
-    form.classList.remove('was-validated');
-    
-    // Agregar a la lista de autos
-    addCarToList(marca, modelo, anio, color);
-    
-    // Mostrar modal con los detalles
-    document.getElementById('modalMarca').textContent = marca;
-    document.getElementById('modalModelo').textContent = modelo;
-    document.getElementById('modalAnio').textContent = anio;
-    document.getElementById('modalColor').textContent = color;
-    
-    // Mostrar el modal
-    $('#confirmModal').modal('show');
-    
-    // Limpiar el formulario
-    form.reset();
+    if (!marca || !modelo || !anio || anio < 1886 || !color) {
+        warningMessage.style.display = 'block';
+        return;
+    }
+
+    warningMessage.style.display = 'none';
+
+    const tableBody = document.getElementById('car-table-body');
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+        <td>${marca}</td>
+        <td>${modelo}</td>
+        <td>${anio}</td>
+        <td class="color-cell">${color}</td>
+    `;
+
+    tableBody.appendChild(row);
+
+    document.querySelectorAll('.color-cell').forEach(cell => {
+        cell.addEventListener('mouseover', function() {
+            this.style.backgroundColor = this.textContent;
+        });
+        cell.addEventListener('mouseout', function() {
+            this.style.backgroundColor = '';
+        });
+    });
+
+    document.getElementById('carForm').reset();
 });
 
 // Función para agregar un auto a la lista
