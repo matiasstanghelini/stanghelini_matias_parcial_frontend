@@ -1,0 +1,32 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+h1 {
+    margin-bottom: 20px;
+}
+table {
+    width: 30%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #333;
+    color: white;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+label, input, select {
+    margin-bottom: 10px;
+}

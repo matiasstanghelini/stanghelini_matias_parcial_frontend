@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RGB Automotores</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Animate.css -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="container mt-5">
+    <!-- Modal para confirmación de agregado -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmModalLabel">Auto Agregado</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>El auto ha sido agregado correctamente.</p>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="modalMarca"></h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="modalModelo"></h6>
+                <p class="card-text">
+                  <strong>Año:</strong> <span id="modalAnio"></span><br>
+                  <strong>Color:</strong> <span id="modalColor"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h1 class="text-center mb-4 animate__animated animate__fadeInDown">
+              RGB Automotores
+            </h1>
+            <div
+              class="alert alert-info animate__animated animate__fadeInDown"
+              role="alert"
+            >
+              Por favor, comience agregando un auto utilizando el formulario a
+              continuación.
+            </div>
+            <h2
+              id="warning"
+              class="text-danger animate__animated animate__shakeX"
+              style="display: none"
+            >
+              Revisar formulario
+            </h2>
+            <form id="carForm" class="mt-4 animate__animated animate__fadeInUp needs-validation" novalidate>
+              <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="marca"
+                  name="marca"
+                  data-toggle="tooltip"
+                  data-placement="right"
+                  title="Ingrese la marca del automóvil"
+                  required
+                />
+                <div class="invalid-feedback">Por favor ingrese una marca.</div>
+              </div>
+              <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="modelo"
+                  name="modelo"
+                  data-toggle="tooltip"
+                  data-placement="right"
+                  title="Ingrese el modelo del automóvil"
+                  required
+                />
+                <div class="invalid-feedback">Por favor ingrese un modelo.</div>
+              </div>
+              <div class="form-group">
+                <label for="anio">Año:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="anio"
+                  name="anio"
+                  min="1886"
+                  data-toggle="tooltip"
+                  data-placement="right"
+                  title="Ingrese el año de fabricación (mínimo 1886)"
+                  required
+                />
+                <div class="invalid-feedback">Por favor ingrese un año válido (mínimo 1886).</div>
+              </div>
+              <div class="form-group">
+                <label for="color">Color:</label>
+                <select class="form-control" id="color" name="color" data-toggle="tooltip" data-placement="right" title="Seleccione uno de los colores disponibles" required>
+                  <option value="">Seleccione un color</option>
+                  <option value="rojo">Rojo</option>
+                  <option value="verde">Verde</option>
+                  <option value="azul">Azul</option>
+                </select>
+                <div class="invalid-feedback">Por favor seleccione un color.</div>
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-car"></i> Agregar
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h2 class="text-center mb-4 animate__animated animate__fadeInDown">
+              Lista de Autos
+            </h2>
+            <div class="list-group" id="autosList">
+              <!-- Los autos se agregarán aquí dinámicamente -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
